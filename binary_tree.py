@@ -66,8 +66,10 @@ class node():
                 self.parent=None
             elif node_to_remove.val<parent.val:
                 parent.left= node_to_remove.right
+                node_to_remove.right.parent=parent
             else:
                 parent.right=node_to_remove.right
+                node_to_remove.right.parent=parent
             del node_to_remove
 
         elif node_to_remove.right==None:
@@ -78,8 +80,10 @@ class node():
                 self.parent=None
             elif node_to_remove.val<parent.val:
                 parent.left= node_to_remove.left
+                node_to_remove.left.parent=parent
             else:
                 parent.right=node_to_remove.left
+                node_to_remove.left.parent=parent
             del node_to_remove
 
         else:
@@ -119,23 +123,17 @@ class node():
         if self!=None:
             if self.right!=None:
                 self.right.printDeorder()
-            print(self.val)
+            print(self.val,end=' => ')
             if self.left!=None:
                 self.left.printDeorder()
         return
     
 
-n=node(7)
+n=node(5)
 for i in range(10):
     n.add(random.randint(0,10))
 n.printInorder()
 print()
-n=n.remove(7)
-n.printInorder()
-print()
-n=n.remove(1)
-n.printInorder()
-print()
-n=n.remove(9)
+n=n.remove(10)
 n.printInorder()
 
