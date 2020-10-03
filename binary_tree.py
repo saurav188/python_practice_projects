@@ -127,13 +127,25 @@ class node():
             if self.left!=None:
                 self.left.printDeorder()
         return
-    
+    def BFS(self,val):
+        queue=[self]
+        while len(queue)!=0:
+            temp=queue.pop(0)
+            if val==temp.val:
+                return temp
+            if temp.left!=None:
+                queue.insert(0,temp.left)
+            if temp.right!=None:
+                queue.insert(0,temp.right)
+        return 
 
 n=node(5)
 for i in range(10):
     n.add(random.randint(0,10))
 n.printInorder()
 print()
-n=n.remove(10)
-n.printInorder()
-
+node_7=n.BFS(7)
+temp=node_7
+while temp:
+    print(temp.val,end=' => ')
+    temp=temp.parent 
