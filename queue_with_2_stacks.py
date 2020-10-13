@@ -5,10 +5,7 @@ class Queue:
         
     def enqueue(self, val):
         self.stack1.append(val)
-        temp=self.stack1
-        self.stack2=[]
-        for i in range(len(temp)-1,-1,-1):
-            self.stack2.append(temp[i])
+        self.stack2.insert(0,val)
 
     def dequeue(self):
         self.stack1.pop(0)
