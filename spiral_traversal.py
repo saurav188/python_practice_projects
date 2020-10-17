@@ -1,46 +1,32 @@
 def matrix_spiral_print(M):
-    no_of_row=len(M)
-    initial_no_of_row=len(M)
-    initial_no_of_column=len(M[0])
-    no_of_column=len(M[0])
-    visited=[[False for i in range(no_of_column)] for j in range(no_of_row)]
-    row_no=0
-    column_no=0
-    next_no=M[row_no][column_no]
-    visited[row_no][column_no]=True
-    horizontal_direction=1
-    vertical_direction=1
-    while next_no is not None:
-        print(next_no,end=' ')
-        if horizontal_direction==1 and vertical_direction==1:
-            if column_no+1<no_of_column:
-                column_no+=horizontal_direction
-            elif row_no+1<no_of_row:
-                row_no+=vertical_direction
-            else:
-                horizontal_direction=-1
-                vertical_direction=-1
-                column_no+=horizontal_direction
-                no_of_column-=1
-                no_of_row-=1
-
-        elif horizontal_direction==-1 and vertical_direction==-1:
-            if column_no>initial_no_of_column-no_of_column-1:
-                column_no+=horizontal_direction
-            elif row_no>initial_no_of_row-no_of_row:
-                row_no+=vertical_direction
-            else:
-                horizontal_direction=1
-                vertical_direction=1
-                column_no+=horizontal_direction
-                
-        next_no=M[row_no][column_no]
-        if visited[row_no][column_no]:
-            next_no=None
+    def helper(grid,direction):
+        if len(grid)==0:
+            return
+        no_of_rows=len(grid)
+        no_of_columns=len(grid[0])
+        if direction==1:
+            row=0
+            colunm=0
+            while row<no_of_rows and colunm<no_of_columns:
+                print(grid[row][colunm],end=' ')
+                if colunm+1<no_of_columns:
+                    colunm+=1
+                else:
+                    row+=1
+            helper([[grid[j][i] for i in range(no_of_columns-1)] for j in range(1,no_of_rows)],-direction)
         else:
-            visited[row_no][column_no]=True
-        
-    return 
+            row=no_of_rows-1
+            column=no_of_columns-1
+            while row>=0 and column>=0:
+                print(grid[row][column],end=' ')
+                if column>0:
+                    column-=1
+                else:
+                    row-=1
+            helper([[grid[j][i] for i in range(1,no_of_columns)] for j in range(no_of_rows-1)],-direction)
+    
+    direction=1
+    helper(grid,direction)
 
 grid = [[1,  2,  3,  4,  5],
         [6,  7,  8,  9,  10],
