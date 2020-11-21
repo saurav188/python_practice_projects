@@ -9,7 +9,7 @@ def climb_ladder(no_steps,array_of_steps):
         steps[i]=temp
     return steps[no_steps]
 
-steps=6
+steps=3
 array_of_steps=[1,2]
 print(climb_ladder(steps,array_of_steps))
 
