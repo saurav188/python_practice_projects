@@ -1,11 +1,11 @@
 class Node:
-  def __init__(self, value, left=None, right=None):
-    self.value = value
-    self.left = left
-    self.right = right
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left = left
+        self.right = right
 
-  def __repr__(self):
-    return f"(Value: {self.value} Left: {self.left} Right: {self.right})"
+    def __repr__(self):
+        return f"(Value: {self.value} Left: {self.left} Right: {self.right})"
 
 
 def tree_level_max_sum(root):
@@ -27,7 +27,7 @@ def tree_level_max_sum(root):
             sums[level_no]=sum
             if sum>=sums[max_level]:
                 max_level=level_no
-            temp2=0
+            sum=0
             level_no+=1
             level=[]
     return max_level
